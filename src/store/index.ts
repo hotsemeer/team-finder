@@ -15,7 +15,9 @@ export default new Vuex.Store({
   state: {
     bosses: Array<Boss>(...bosses),
     favouriteBosses: Array<String>(),
-    user: localStorage.user ? JSON.parse(localStorage.user) : new User(),
+    user: localStorage.user
+      ? (JSON.parse(localStorage.user) as User)
+      : new User(),
     currentAccountIndex: localStorage.currentAccountIndex
       ? localStorage.currentAccountIndex
       : null,
@@ -35,6 +37,14 @@ export default new Vuex.Store({
       return state.currentAccountIndex !== null
         ? state.user.accounts[state.currentAccountIndex]
         : null;
+    },
+    unreadMessages: (state: any) => {
+      return (
+        state.user.userMessages.reduce(
+          (total: number, current: UserMessage) => (total += current.unread),
+          0
+        ) || 0
+      );
     }
   },
   mutations: {
@@ -61,6 +71,12 @@ export default new Vuex.Store({
       } else {
         state.favouriteBosses.push(bossId);
       }
+    },
+    addUserMessage(state, userMessage: UserMessage) {
+      state.user.userMessages.push(userMessage);
+    },
+    deleteUserMessage(state, index: number) {
+      state.user.userMessages.splice(index, 1);
     }
   },
   actions: {},

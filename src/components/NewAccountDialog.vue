@@ -8,11 +8,13 @@
       <v-card-text class="mt-2">
         <v-form v-model="valid">
           <v-subheader class="pa-0">Accounttype</v-subheader>
-          <v-btn-toggle v-model="selectedButton" mandatory borderless group>
-            <v-btn v-for="(type, index) in $store.state.accountTypes" :key="index" text x-large>
-              <v-icon>{{ type.icon }}</v-icon>
-              {{ type.name }}
-            </v-btn>
+          <v-btn-toggle v-model="selectedButton" mandatory borderless group class="row">
+            <v-col v-for="(type, index) in $store.state.accountTypes" :key="index" cols="12" sm="3" md="2" lg="1">
+              <v-btn text x-large>
+                <v-icon>{{ type.icon }}</v-icon>
+                {{ type.name }}
+              </v-btn>
+            </v-col>
           </v-btn-toggle>
           <v-text-field
             v-model="account.username"

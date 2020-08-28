@@ -9,7 +9,7 @@ export default class UserMessage {
     return this.messages.reduce((p, c) => p + (c.read ? 1 : 0), 0);
   }
 
-  constructor(user: RunescapeAccount, messages: Array<Message>) {
+  constructor(user: RunescapeAccount, messages: Array<Message> = []) {
     this.user = user;
     this.messages = messages;
   }

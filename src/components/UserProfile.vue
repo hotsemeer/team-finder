@@ -28,7 +28,7 @@
       </v-list-item>
     </v-list>
 
-    <new-profile-dialog v-if="dialog" v-model="dialog" />
+    <new-account-dialog v-if="dialog" v-model="dialog" />
   </v-menu>
 </template>
 
@@ -38,7 +38,7 @@ import RunescapeAccount from '@/classes/RunescapeAccount';
 
 export default Vue.extend({
   components: {
-    newProfileDialog: () => import('@/components/NewProfileDialog.vue'),
+    newAccountDialog: () => import('@/components/NewAccountDialog.vue'),
   },
   data() {
     return {
