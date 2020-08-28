@@ -1,0 +1,32 @@
+<template>
+  <svg
+    version="1.1"
+    id="Layer_1"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    x="0px"
+    y="0px"
+    width="90px"
+    height="90px"
+    viewBox="0 0 90 90"
+    enable-background="new 0 0 90 90"
+    xml:space="preserve"
+  >
+    <image
+      id="image0"
+      width="90"
+      height="90"
+      x="0"
+      y="0"
+      xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaBAMAAADKhlwxAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAJFBMVEUAAAAAAABwNDRoMDBf
+LCxUJydjLi5PJSVKIyNFICBZKSn///8oQ77SAAAAAnRSTlMALqpFwPcAAAABYktHRAsf18TAAAAA
+CXBIWXMAAA7DAAAOwwHHb6hkAAAAB3RJTUUH5AgaDQoJxT7McwAAAJdJREFUWMPt1TENwCAQhWEs
+nIVawAIWsIAFLGABC6jshQuEwjF06MLrPzbf9ALFmGO6arZ1nL5aduidJqKDtEqdc7BaHA3JdhKs
+7qhvx21PH4DmVsp575E1t1Ju+6/C0CGEiUqweqL0DFObetnGYoyppu8NoKfDxF9SS1kQQ68LCs05
+Y+pSSt9uPEn6TUPVtHuc1LF//Uk3Hda+tsChwHUAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjAtMDgt
+MjZUMTM6MTA6MDkrMDM6MDDk9joRAAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIwLTA4LTI2VDEzOjEw
+OjA5KzAzOjAwlauCrQAAAABJRU5ErkJggg=="
+    />
+  </svg>
+</template>
