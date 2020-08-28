@@ -8,8 +8,8 @@
 
     <v-divider />
 
-    <transition-group name="card-list" tag="div" class="row align-center justify-center">
-      <v-col v-for="(boss, index) in bossesFiltered" :key="index">
+    <transition-group name="card-list" tag="div" class="row mx-2">
+      <v-col v-for="(boss, index) in bossesFiltered" :key="index" class="justify-center" cols="12" sm="6" lg="3" xl="2">
         <boss-card
           :boss="boss"
           :key="boss.id"
