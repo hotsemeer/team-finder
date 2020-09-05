@@ -1,7 +1,7 @@
 <template>
-  <v-card v-if="!selectedUserMessage" :height="height" :width="width" @click.native.stop>
+  <v-card v-if="!selectedUserMessage" :height="height">
     <v-toolbar flat>
-      <v-btn icon @click="$emit('input', false)">
+      <v-btn icon @click="$emit('close')">
         <v-icon>close</v-icon>
       </v-btn>
       <v-spacer />
@@ -44,7 +44,7 @@
     </v-list>
   </v-card>
 
-  <v-card v-else :height="height" :width="width" @click.native.stop>
+  <v-card v-else :height="height">
     <v-toolbar flat>
       <v-btn icon @click="back">
         <v-icon>mdi-chevron-left</v-icon>
@@ -100,9 +100,6 @@ import EmptyMessages from '@/assets/undraw_mobile_messages.vue';
 export default Vue.extend({
   components: {
     EmptyMessages,
-  },
-  props: {
-    value: Boolean,
   },
   data() {
     return {

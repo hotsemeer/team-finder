@@ -1,8 +1,6 @@
 <template>
   <v-card
     class="pa-0 d-flex flex-no-wrap justify-space-between"
-    min-width="200"
-    max-width="400"
     outlined
     :to="to"
   >

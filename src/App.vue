@@ -16,7 +16,7 @@
 
     <v-main>
       <router-view></router-view>
-      <v-menu :close-on-content-click="false" v-model="open" offset-y>
+      <v-dialog v-if="!onHomePage" v-model="open" :fullscreen="$vuetify.breakpoint.mobile" :max-width="$vuetify.breakpoint.mobile ? 1000 : 500">
         <template #activator="{ on, attrs }">
           <v-btn
             v-model="open"
@@ -33,8 +33,8 @@
             </v-badge>
           </v-btn>
         </template>
-        <message-card v-model="open" v-if="!onHomePage" />
-      </v-menu>
+        <message-card @close="open = false" />
+      </v-dialog>
     </v-main>
   </v-app>
 </template>
