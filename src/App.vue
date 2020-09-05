@@ -18,28 +18,36 @@
       <router-view></router-view>
       <v-menu :close-on-content-click="false" v-model="open" offset-y>
         <template #activator="{ on, attrs }">
-          <v-btn v-model="open" color="blue darken-2" dark fab absolute right v-bind="attrs" v-on="on" style="bottom: 24px; right: 24px">
+          <v-btn
+            v-model="open"
+            color="blue darken-2"
+            dark
+            fab
+            v-bind="attrs"
+            v-on="on"
+            style="position: fixed;bottom: 24px; right: 24px"
+          >
             <v-icon v-if="open">mdi-close</v-icon>
             <v-badge v-else left color="indigo" :content="unreadMessages" :value="unreadMessages">
               <v-icon>message</v-icon>
             </v-badge>
           </v-btn>
         </template>
-        <message-card v-model="open" />
+        <message-card v-model="open" v-if="!onHomePage" />
       </v-menu>
     </v-main>
   </v-app>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import RunescapeAccount from "@/classes/RunescapeAccount";
-import { mapGetters } from 'vuex'
+import Vue from 'vue';
+import RunescapeAccount from '@/classes/RunescapeAccount';
+import { mapGetters } from 'vuex';
 
 export default Vue.extend({
   components: {
-    UserProfile: () => import("@/components/UserProfile.vue"),
-    MessageCard: () => import("@/components/MessageCard.vue"),
+    UserProfile: () => import('@/components/UserProfile.vue'),
+    MessageCard: () => import('@/components/MessageCard.vue'),
   },
   data() {
     return {
@@ -50,9 +58,10 @@ export default Vue.extend({
     selectedAccount(): RunescapeAccount | null {
       return this.$store.getters.currentAccount;
     },
-    ...mapGetters([
-      'unreadMessages',
-    ])
+    ...mapGetters(['unreadMessages']),
+    onHomePage(): boolean {
+      return false;
+    },
   },
 });
 </script>

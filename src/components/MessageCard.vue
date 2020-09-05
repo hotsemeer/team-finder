@@ -91,11 +91,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Message from "@/classes/Message";
-import RunescapeAccount from "@/classes/RunescapeAccount";
-import UserMessage from "@/classes/UserMessage";
-import EmptyMessages from "@/assets/undraw_mobile_messages.vue";
+import Vue from 'vue';
+import Message from '@/classes/Message';
+import RunescapeAccount from '@/classes/RunescapeAccount';
+import UserMessage from '@/classes/UserMessage';
+import EmptyMessages from '@/assets/undraw_mobile_messages.vue';
 
 export default Vue.extend({
   components: {
@@ -107,48 +107,48 @@ export default Vue.extend({
   data() {
     return {
       selectedUserMessage: null,
-      message: "",
-      userMessage: new UserMessage(new RunescapeAccount("tepel lepel")),
+      message: '',
+      userMessage: new UserMessage(new RunescapeAccount('tepel lepel')),
     };
   },
   created() {
-    this.$store.commit("addUserMessage", this.userMessage);
+    this.$store.commit('addUserMessage', this.userMessage);
   },
   computed: {
     height(): string {
-      return this.$vuetify.breakpoint.mobile ? "100%" : "360px";
+      return this.$vuetify.breakpoint.mobile ? '100%' : '360px';
     },
     width(): string {
-      return this.$vuetify.breakpoint.mobile ? "100%" : "320px";
+      return this.$vuetify.breakpoint.mobile ? '100%' : '320px';
     },
-    userMessages(): Array<UserMessage> {
+    userMessages(): UserMessage[] {
       return this.$store.state.user.userMessages;
     },
   },
   methods: {
     removeUserMessage(index: number) {
-      this.$store.commit("deleteUserMessage", index);
+      this.$store.commit('deleteUserMessage', index);
       this.selectedUserMessage = null;
     },
     viewMessages(userMessage: any) {
       this.selectedUserMessage = userMessage;
-      let list: HTMLElement = this.$refs.list as HTMLElement;
+      const list: HTMLElement = this.$refs.list as HTMLElement;
       if (list) {
         list.scrollTop = list.scrollHeight - list.clientHeight;
       }
-      let input: HTMLElement = this.$refs.input as HTMLElement;
+      const input: HTMLElement = this.$refs.input as HTMLElement;
       if (input) {
         input.focus();
       }
     },
     back() {
-      this.message = "";
+      this.message = '';
       this.selectedUserMessage = null;
     },
     sendMessage() {
       if (this.message.trim().length > 0) {
-        this.userMessage.messages.push(new Message(this.message, "1"));
-        this.message = "";
+        this.userMessage.messages.push(new Message(this.message, '1'));
+        this.message = '';
       }
     },
   },

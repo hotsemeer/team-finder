@@ -50,7 +50,14 @@
     <v-stepper-content step="3">
       <div class="text-center overline text-h3 mb-5">I am</div>
       <div>
-        <v-btn block tile x-large text @click="addAccount('find')" class="col my-3">Looking for a team</v-btn>
+        <v-btn
+          block
+          tile
+          x-large
+          text
+          @click="addAccount('find')"
+          class="col my-3"
+        >Looking for a team</v-btn>
         <v-btn block tile x-large text @click="addAccount('host')" class="col my-3">Hosting a team</v-btn>
       </div>
     </v-stepper-content>
@@ -58,9 +65,9 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import axios from "axios";
-import RunescapeAccount from "@/classes/RunescapeAccount";
+import Vue from 'vue';
+import axios from 'axios';
+import RunescapeAccount from '@/classes/RunescapeAccount';
 
 export default Vue.extend({
   props: {
@@ -68,10 +75,10 @@ export default Vue.extend({
   },
   created() {
     if (this.step > 1 && this.account.type === null) {
-      this.$router.replace({ query: { s: "1" } });
+      this.$router.replace({ query: { s: '1' } });
     }
-    if (this.step > 2 && this.account.username === "") {
-      this.$router.replace({ query: { s: "2" } });
+    if (this.step > 2 && this.account.username === '') {
+      this.$router.replace({ query: { s: '2' } });
     }
   },
   data() {
@@ -80,7 +87,7 @@ export default Vue.extend({
     };
   },
   methods: {
-    lookup(username: String) {
+    lookup(username: string) {
       // const url = `https://secure.runescape.com/`;
       // const http = axios.create({
       //   baseURL: url,
@@ -89,9 +96,9 @@ export default Vue.extend({
       //   console.log(result);
       // });
     },
-    addAccount(route: String): void {
-      this.$store.commit("addAccount", this.account);
-      this.$store.commit("selectNewestAccount");
+    addAccount(route: string): void {
+      this.$store.commit('addAccount', this.account);
+      this.$store.commit('selectNewestAccount');
       this.$router.push({ name: `${route}.boss.selection` });
     },
   },

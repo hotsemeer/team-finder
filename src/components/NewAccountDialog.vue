@@ -9,7 +9,14 @@
         <v-form v-model="valid">
           <v-subheader class="pa-0">Accounttype</v-subheader>
           <v-btn-toggle v-model="selectedButton" mandatory borderless group class="row">
-            <v-col v-for="(type, index) in $store.state.accountTypes" :key="index" cols="12" sm="3" md="2" lg="1">
+            <v-col
+              v-for="(type, index) in $store.state.accountTypes"
+              :key="index"
+              cols="12"
+              sm="3"
+              md="2"
+              lg="1"
+            >
               <v-btn text x-large>
                 <v-icon>{{ type.icon }}</v-icon>
                 {{ type.name }}
@@ -33,20 +40,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import RunescapeAccount from '@/classes/RunescapeAccount';
 
 export default Vue.extend({
   props: {
-    value: Boolean
+    value: Boolean,
   },
   data() {
     return {
       account: new RunescapeAccount(),
       rules: {
-        required: (value: string) => !!value || "Required",
+        required: (value: string) => !!value || 'Required',
         username: (value: string) =>
-          RegExp("^[a-zA-Z0-9 ]{1,12}$", "g").test(value) ||
+          RegExp('^[a-zA-Z0-9 ]{1,12}$', 'g').test(value) ||
           `${value} is not a valid username`,
       },
       valid: false,
@@ -60,10 +67,10 @@ export default Vue.extend({
   },
   methods: {
     saveAccount(): void {
-      this.$store.commit("addAccount", this.account);
-      this.$store.commit("selectNewestAccount");
+      this.$store.commit('addAccount', this.account);
+      this.$store.commit('selectNewestAccount');
       this.$emit('input', false);
     },
-  }
-})
+  },
+});
 </script>

@@ -1,7 +1,6 @@
 <template>
   <v-container fill-height fluid>
     <v-row justify="space-around" align="start" class="fill-height">
-
       <v-col cols="12" md="4">
         <router-view class="mx-0 mx-md-5" />
       </v-col>
@@ -51,8 +50,8 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Team, { LootshareType } from "@/classes/Team";
+import Vue from 'vue';
+import Team, { LootshareType } from '@/classes/Team';
 
 export default Vue.extend({
   components: {
@@ -66,10 +65,10 @@ export default Vue.extend({
     selectedTeam: Object,
   },
   computed: {
-    background(): String {
-      return this.boss ? `background-image: url("${this.boss.image}")` : "";
+    background(): string {
+      return this.boss ? `background-image: url("${this.boss.image}")` : '';
     },
-    teams(): Array<Team> {
+    teams(): Team[] {
       return this.$store.state.teams;
     },
   },

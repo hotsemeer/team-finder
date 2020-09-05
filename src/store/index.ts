@@ -14,7 +14,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     bosses: Array<Boss>(...bosses),
-    favouriteBosses: Array<String>(),
+    favouriteBosses: Array<string>(),
     user: localStorage.user
       ? (JSON.parse(localStorage.user) as User)
       : new User(),
@@ -25,9 +25,9 @@ export default new Vuex.Store({
     accountTypes: Array<AccountType>(
       new AccountType('Main', '$vuetify.icons.runescape'),
       new AccountType('Ironman', '$vuetify.icons.ironman'),
-      new AccountType('Hardcore Ironman', '$vuetify.icons.hardcore_ironman')
+      new AccountType('Hardcore Ironman', '$vuetify.icons.hardcore_ironman'),
     ),
-    userMessages: Array<UserMessage>()
+    userMessages: Array<UserMessage>(),
   },
   getters: {
     accounts: (state: any) => {
@@ -42,10 +42,10 @@ export default new Vuex.Store({
       return (
         state.user.userMessages.reduce(
           (total: number, current: UserMessage) => (total += current.unread),
-          0
+          0,
         ) || 0
       );
-    }
+    },
   },
   mutations: {
     addAccount(state, account: RunescapeAccount) {
@@ -63,10 +63,10 @@ export default new Vuex.Store({
     createTeam(state, team: Team) {
       state.teams.push(team);
     },
-    toggleFavouriteBoss(state, bossId: String) {
+    toggleFavouriteBoss(state, bossId: string) {
       if (state.favouriteBosses.includes(bossId)) {
         state.favouriteBosses = state.favouriteBosses.filter(
-          (b) => b !== bossId
+          (b) => b !== bossId,
         );
       } else {
         state.favouriteBosses.push(bossId);
@@ -77,8 +77,8 @@ export default new Vuex.Store({
     },
     deleteUserMessage(state, index: number) {
       state.user.userMessages.splice(index, 1);
-    }
+    },
   },
   actions: {},
-  modules: {}
+  modules: {},
 });

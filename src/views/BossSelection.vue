@@ -1,15 +1,21 @@
 <template>
   <div class="pa-0 pa-md-5">
     <div class="d-flex justify-center">
-      <v-switch label="Show favourited" inset v-model="showFavourited">
-        Favourited
-      </v-switch>
+      <v-switch label="Show favourited" inset v-model="showFavourited">Favourited</v-switch>
     </div>
 
     <v-divider />
 
     <transition-group name="card-list" tag="div" class="row mx-2">
-      <v-col v-for="(boss, index) in bossesFiltered" :key="index" class="justify-center" cols="12" sm="6" lg="3" xl="2">
+      <v-col
+        v-for="(boss, index) in bossesFiltered"
+        :key="index"
+        class="justify-center"
+        cols="12"
+        sm="6"
+        lg="3"
+        xl="2"
+      >
         <boss-card
           :boss="boss"
           :key="boss.id"
@@ -22,8 +28,8 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Boss from "@/classes/Boss";
+import Vue from 'vue';
+import Boss from '@/classes/Boss';
 
 export default Vue.extend({
   components: {
@@ -35,23 +41,28 @@ export default Vue.extend({
   },
   data() {
     return {
-      showFavourited: false
-    }
+      showFavourited: false,
+    };
   },
   computed: {
-    bossesFiltered(): Array<Boss> {
+    bossesFiltered(): Boss[] {
       return this.$store.state.bosses.filter(this.bossFilter);
     },
   },
   methods: {
     bossFilter(boss: Boss): boolean {
-      if (this.showFavourited && !this.$store.state.favouriteBosses.includes(boss.id)) {
-        return false
+      if (
+        this.showFavourited &&
+        !this.$store.state.favouriteBosses.includes(boss.id)
+      ) {
+        return false;
       }
 
       const checkItems = [boss.name, ...boss.tags].map((t) => t.toLowerCase());
 
-      return checkItems.some((i: string) => i.includes(this.search.toLowerCase()));
+      return checkItems.some((i: string) =>
+        i.includes(this.search.toLowerCase()),
+      );
     },
   },
 });
@@ -63,7 +74,8 @@ export default Vue.extend({
   transition: all 0.5s;
 }
 
-.card-list-enter, .card-list-leave-to {
+.card-list-enter,
+.card-list-leave-to {
   opacity: 0;
   transform: translateX(30px);
 }

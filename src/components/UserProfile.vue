@@ -33,7 +33,7 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 import RunescapeAccount from '@/classes/RunescapeAccount';
 
 export default Vue.extend({
@@ -43,7 +43,7 @@ export default Vue.extend({
   data() {
     return {
       dialog: false,
-      selectedAccountIndex: this.$store.state.currentAccountIndex
+      selectedAccountIndex: this.$store.state.currentAccountIndex,
     };
   },
   computed: {
@@ -56,7 +56,7 @@ export default Vue.extend({
       this.dialog = true;
     },
     changeAccount(index: number): void {
-      this.$store.commit("selectAccount", index);
+      this.$store.commit('selectAccount', index);
     },
   },
 });

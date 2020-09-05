@@ -12,6 +12,6 @@ export default {
         default:
           return 'text--darken-3 green';
       }
-    }
-  }
+    },
+  },
 };

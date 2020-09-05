@@ -6,10 +6,10 @@ import './registerServiceWorker';
 import vuetify from './plugins/vuetify';
 import './plugins/firebase';
 import '@mdi/font/css/materialdesignicons.css';
-import date from '@/filters/date'
+import date from '@/filters/date';
 
 Vue.config.productionTip = false;
-Vue.filter('date', date)
+Vue.filter('date', date);
 
 new Vue({
   router,

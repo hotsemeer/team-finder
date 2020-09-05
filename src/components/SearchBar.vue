@@ -10,18 +10,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 
 export default Vue.extend({
   data() {
     return {
-      search: this.$route.query.search || ''
-    }
+      search: this.$route.query.search || '',
+    };
   },
   watch: {
     search(value: string): void {
-      this.$router.replace({ query: { search: value } })
-    }
-  }
-})
+      this.$router.replace({ query: { search: value } });
+    },
+  },
+});
 </script>

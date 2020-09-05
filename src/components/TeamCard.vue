@@ -92,9 +92,9 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import ExperienceColourMixin from "@/mixins/ExperienceColourMixin";
-import Team from "@/classes/Team";
+import Vue from 'vue';
+import ExperienceColourMixin from '@/mixins/ExperienceColourMixin';
+import Team from '@/classes/Team';
 
 export default Vue.extend({
   mixins: [ExperienceColourMixin],
@@ -103,7 +103,7 @@ export default Vue.extend({
   },
   methods: {
     sendMessage() {
-      this.$emit('openMessages')
+      this.$emit('openMessages');
     },
   },
 });

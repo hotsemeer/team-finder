@@ -1,7 +1,17 @@
 <template>
-  <v-card class="pa-0 d-flex flex-no-wrap justify-space-between" min-width="200" max-width="400" outlined :to="to">
+  <v-card
+    class="pa-0 d-flex flex-no-wrap justify-space-between"
+    min-width="200"
+    max-width="400"
+    outlined
+    :to="to"
+  >
     <div>
-      <v-card-title class="headline pr-0" style="word-break: break-word !important;" v-text="boss.name"></v-card-title>
+      <v-card-title
+        class="headline pr-0"
+        style="word-break: break-word !important;"
+        v-text="boss.name"
+      ></v-card-title>
       <v-card-actions>
         <v-chip v-if="boss.combat_level" color="red" text-color="white">Lvl. {{ boss.combat_level }}</v-chip>
         <v-chip v-for="tag in boss.tags" :key="tag" color="green" text-color="white">{{ tag }}</v-chip>
@@ -19,18 +29,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from 'vue';
 
 export default Vue.extend({
   props: {
     boss: { type: Object, required: true },
     to: Object,
-    favourited: Boolean
+    favourited: Boolean,
   },
   methods: {
     toggleFavourite(): void {
-      this.$store.commit('toggleFavouriteBoss', this.boss.id)
-    }
-  }
-})
+      this.$store.commit('toggleFavouriteBoss', this.boss.id);
+    },
+  },
+});
 </script>

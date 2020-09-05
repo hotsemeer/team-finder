@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 
-export default function (value: Date | string | number, format: string | undefined): string {
-  return '18:12'
+export default function(value: Date | string | number, format: string | undefined): string {
+  return '18:12';
   // const date = DateTime().f;
 
   // if (!date.isValid()) return '.'

@@ -37,15 +37,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import ExperienceColourMixin from '@/mixins/ExperienceColourMixin'
+import Vue from 'vue';
+import ExperienceColourMixin from '@/mixins/ExperienceColourMixin';
 
 export default Vue.extend({
-  mixins: [
-    ExperienceColourMixin
-  ],
+  mixins: [ExperienceColourMixin],
   props: {
-    team: Object
-  }
-})
+    team: Object,
+  },
+});
 </script>

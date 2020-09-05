@@ -56,8 +56,8 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Team, { ExperienceType, LootshareType } from "@/classes/Team";
+import Vue from 'vue';
+import Team, { ExperienceType, LootshareType } from '@/classes/Team';
 
 export default Vue.extend({
   props: {
@@ -81,12 +81,12 @@ export default Vue.extend({
     };
   },
   computed: {
-    background(): String {
+    background(): string {
       return this.boss
         ? `background-image: url("${require(`@/assets/bosses/${this.boss.image}`)}")`
-        : "";
+        : '';
     },
-    teamLeftItems(): Array<Number> {
+    teamLeftItems(): number[] {
       const array = [...Array(this.team.size).keys()];
       array.shift();
       return array;
@@ -94,9 +94,9 @@ export default Vue.extend({
   },
   methods: {
     hostTeam(): void {
-      this.$store.commit("createTeam", this.team);
+      this.$store.commit('createTeam', this.team);
       this.$router.push({
-        name: "find.boss",
+        name: 'find.boss',
         params: { bossname: this.boss.name },
       });
     },
