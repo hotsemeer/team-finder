@@ -76,8 +76,8 @@ const routes: RouteConfig[] = [
       'app-bar-content': () =>
         import(
           /* webpackChunkName: "searchbar" */ '../components/SearchBar.vue'
-        ),
-    },
+        )
+    }
   },
   {
     path: '/host/:bossName',
@@ -85,13 +85,13 @@ const routes: RouteConfig[] = [
     beforeEnter: hasAccount,
     props: {
       default: (route: Route) => ({
-        boss: store.state.bosses.find((b) => b.name === route.params.bossName),
-      }),
+        boss: store.state.bosses.find((b) => b.name === route.params.bossName)
+      })
     },
     components: {
       default: () =>
-        import(/* webpackChunkName: "host.boss" */ '../views/Host.vue'),
-    },
+        import(/* webpackChunkName: "host.boss" */ '../views/Host.vue')
+    }
   },
   {
     path: '/find/:bossName',
@@ -99,12 +99,12 @@ const routes: RouteConfig[] = [
     beforeEnter: hasAccount,
     props: {
       default: (route: Route) => ({
-        boss: store.state.bosses.find((b) => b.name === route.params.bossName),
-      }),
+        boss: store.state.bosses.find((b) => b.name === route.params.bossName)
+      })
     },
     components: {
       default: () =>
-        import(/* webpackChunkName: "find.boss" */ '../views/Find.vue'),
+        import(/* webpackChunkName: "find.boss" */ '../views/Find.vue')
     },
     children: [
       {
@@ -115,10 +115,10 @@ const routes: RouteConfig[] = [
             /* webpackChunkName: "team.details" */ '../components/TeamCard.vue'
           ),
         props: (route: Route) => ({
-          team: store.state.teams.find((t) => t.id === route.params.id),
-        }),
-      },
-    ],
+          team: store.state.teams.find((t) => t.id === route.params.id)
+        })
+      }
+    ]
   },
   {
     path: '/profile',
@@ -126,8 +126,8 @@ const routes: RouteConfig[] = [
     beforeEnter: hasAccount,
     components: {
       default: () =>
-        import(/* webpackChunkName: "user.profile" */ '../views/Profile.vue'),
-    },
+        import(/* webpackChunkName: "user.profile" */ '../views/Profile.vue')
+    }
   },
   {
     path: '/profile/:id',
@@ -135,22 +135,22 @@ const routes: RouteConfig[] = [
     beforeEnter: hasAccount,
     components: {
       default: () =>
-        import(/* webpackChunkName: "user.profile" */ '../views/Profile.vue'),
+        import(/* webpackChunkName: "user.profile" */ '../views/Profile.vue')
     },
     props: {
       default: (route: Route) => ({
         account: store.state.user.accounts.find(
-          (a: RunescapeAccount) => a.id === route.params.id,
-        ),
-      }),
-    },
-  },
+          (a: RunescapeAccount) => a.id === route.params.id
+        )
+      })
+    }
+  }
 ];
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
+  routes
 });
 
 export default router;

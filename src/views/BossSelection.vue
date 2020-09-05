@@ -8,8 +8,8 @@
 
     <transition-group name="card-grid" tag="div" class="boss-grid">
       <boss-card
-        v-for="(boss, index) in bossesFiltered"
-        :key="index"
+        v-for="boss in bossesFiltered"
+        :key="boss.id"
         :boss="boss"
         :to="{ name: `${preference}.boss`, params: { bossName: boss.name }}"
         :favourited="$store.state.favouriteBosses.includes(boss.id)"

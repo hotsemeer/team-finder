@@ -1,12 +1,11 @@
 import Vue from 'vue';
-import Vuex from 'vuex';
+import Vuex, { Commit } from 'vuex';
 import RunescapeAccount from '@/classes/RunescapeAccount';
 import Team from '@/classes/Team';
 import Boss from '@/classes/Boss';
 import bosses from '@/assets/bosses';
 import AccountType from '@/classes/AccountType';
 import UserMessage from '@/classes/UserMessage';
-import Message from '@/classes/Message';
 import User from '@/classes/User';
 
 Vue.use(Vuex);
@@ -25,9 +24,9 @@ export default new Vuex.Store({
     accountTypes: Array<AccountType>(
       new AccountType('Main', '$vuetify.icons.runescape'),
       new AccountType('Ironman', '$vuetify.icons.ironman'),
-      new AccountType('Hardcore Ironman', '$vuetify.icons.hardcore_ironman'),
+      new AccountType('Hardcore Ironman', '$vuetify.icons.hardcore_ironman')
     ),
-    userMessages: Array<UserMessage>(),
+    userMessages: Array<UserMessage>()
   },
   getters: {
     accounts: (state: any) => {
@@ -42,10 +41,10 @@ export default new Vuex.Store({
       return (
         state.user.userMessages.reduce(
           (total: number, current: UserMessage) => (total += current.unread),
-          0,
+          0
         ) || 0
       );
-    },
+    }
   },
   mutations: {
     addAccount(state, account: RunescapeAccount) {
@@ -66,7 +65,7 @@ export default new Vuex.Store({
     toggleFavouriteBoss(state, bossId: string) {
       if (state.favouriteBosses.includes(bossId)) {
         state.favouriteBosses = state.favouriteBosses.filter(
-          (b) => b !== bossId,
+          (b) => b !== bossId
         );
       } else {
         state.favouriteBosses.push(bossId);
@@ -77,8 +76,16 @@ export default new Vuex.Store({
     },
     deleteUserMessage(state, index: number) {
       state.user.userMessages.splice(index, 1);
-    },
+    }
   },
-  actions: {},
-  modules: {},
+  actions: {
+    createConceptMessage(context, user) {
+      if (!context.state.user.userMessages.some((um: UserMessage) => um.user === user)) {
+        context.commit('addUserMessage', new UserMessage(user));
+      }
+
+    }
+  },
+  modules: {}
 });
+        // !state.user.userMessages.some((um: UserMessage) => um.user === user)

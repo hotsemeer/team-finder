@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app dark v-if="selectedAccount">
+    <v-app-bar app dark v-if="currentAccount" class="rs-background">
       <div>
         <v-btn icon :to="{ name: 'edit.user.profile' }">
           <v-icon>settings</v-icon>
@@ -16,7 +16,12 @@
 
     <v-main>
       <router-view></router-view>
-      <v-dialog v-if="!onHomePage" v-model="open" :fullscreen="$vuetify.breakpoint.mobile" :max-width="$vuetify.breakpoint.mobile ? 1000 : 500">
+      <v-dialog
+        v-if="!onHomePage"
+        v-model="open"
+        :fullscreen="$vuetify.breakpoint.mobile"
+        :max-width="$vuetify.breakpoint.mobile ? 1000 : 500"
+      >
         <template #activator="{ on, attrs }">
           <v-btn
             v-model="open"
@@ -40,35 +45,37 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import RunescapeAccount from '@/classes/RunescapeAccount';
-import { mapGetters } from 'vuex';
+import Vue from "vue";
+import RunescapeAccount from "@/classes/RunescapeAccount";
+import { mapGetters } from "vuex";
 
 export default Vue.extend({
   components: {
-    UserProfile: () => import('@/components/UserProfile.vue'),
-    MessageCard: () => import('@/components/MessageCard.vue'),
+    UserProfile: () => import("@/components/UserProfile.vue"),
+    MessageCard: () => import("@/components/MessageCard.vue")
   },
   data() {
     return {
-      open: false,
+      open: false
     };
   },
   computed: {
-    selectedAccount(): RunescapeAccount | null {
-      return this.$store.getters.currentAccount;
-    },
-    ...mapGetters(['unreadMessages']),
+    ...mapGetters(["unreadMessages", "currentAccount"]),
     onHomePage(): boolean {
       return false;
-    },
-  },
+    }
+  }
 });
 </script>
 
 <style>
 .rs-background {
-  background: url("./assets/background-rs.jpg") repeat 0 0 !important;
+  background: url(https://www.runescape.com/img/rs3/global/header_bg_set.jpg)
+      no-repeat left top,
+    url(https://www.runescape.com/img/rs3/global/header_bg_set.jpg) no-repeat
+      right center,
+    url(https://www.runescape.com/img/rs3/global/header_bg_set.jpg) repeat-x
+      center bottom !important;
 }
 
 .v-toolbar__content {
