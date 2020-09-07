@@ -7,6 +7,7 @@ import vuetify from './plugins/vuetify';
 import './plugins/firebase';
 import '@mdi/font/css/materialdesignicons.css';
 import date from '@/filters/date';
+import '@/assets/main.scss'
 
 Vue.config.productionTip = false;
 Vue.filter('date', date);

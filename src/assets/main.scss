@@ -1,0 +1,15 @@
+.v-toolbar__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+a {
+    text-decoration: none;
+}
+.v-toolbar__content > div > a {
+    margin-right: 12px;
+}
+.v-chip + .v-chip {
+    margin-left: 0.5rem;
+}

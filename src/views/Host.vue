@@ -19,7 +19,7 @@
                   <v-icon v-else color="red darken-2">bookmark</v-icon>
                 </v-btn>
               </template>
-              <span>Save this as default</span>
+              <span class="rs-text">Save this as default</span>
             </v-tooltip>
           </v-card-title>
 

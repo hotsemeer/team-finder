@@ -8,6 +8,18 @@
     </template>
 
     <v-list shaped>
+      <v-list-item @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark">
+        <v-list-item-icon>
+          <transition name="fade" mode="out-in">
+            <v-icon key="dark-icon" v-if="$vuetify.theme.dark">brightness_3</v-icon>
+            <v-icon key="light-icon" v-else color="yellow darken-2">wb_sunny</v-icon>
+          </transition>
+        </v-list-item-icon>
+          <v-list-item-title>{{ $vuetify.theme.dark ? 'Dark' : 'Light'}} mode</v-list-item-title>
+      </v-list-item>
+
+      <v-divider />
+
       <v-list-item-group v-model="selectedAccountIndex">
         <v-list-item
           v-for="(account, index) in $store.state.user.accounts"
@@ -61,3 +73,13 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .2s ease;
+}
+.fade-enter, .fade-leave-to
+/* .component-fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>

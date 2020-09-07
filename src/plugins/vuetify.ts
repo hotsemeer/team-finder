@@ -6,7 +6,6 @@ import Reddit from '@/assets/icons/reddit.vue';
 import HardcoreIronMan from '@/assets/icons/hardcore_ironman.vue';
 import IronMan from '@/assets/icons/ironman.vue';
 import Runescape from '@/assets/icons/runescape.vue';
-
 Vue.use(Vuetify);
 
 export default new Vuetify({
@@ -29,4 +28,13 @@ export default new Vuetify({
       },
     },
   },
+  theme: {
+    dark: true,
+    themes: {
+      dark: {
+        
+      }
+    }
+  },
+
 });

@@ -1,20 +1,19 @@
 <template>
-  <v-app>
-    <v-app-bar app dark v-if="currentAccount" class="rs-background">
+  <v-app @keypress.s="focus" dark>
+    <v-app-bar app dark v-if="currentAccount" class="rs-header">
       <div>
-        <v-btn icon :to="{ name: 'edit.user.profile' }">
-          <v-icon>settings</v-icon>
-        </v-btn>
         <v-btn text :to="{ name: 'find.boss.selection' }">Find</v-btn>
         <v-btn text :to="{ name: 'host.boss.selection' }">Host</v-btn>
       </div>
-      <div class="d-none d-md-block">
-        <router-view name="app-bar-content"></router-view>
+
+      <div class="d-none d-sm-block">
+        <search-bar ref="search" />
       </div>
+      
       <user-profile />
     </v-app-bar>
 
-    <v-main>
+    <v-main class="rs-bg">
       <router-view></router-view>
       <v-dialog
         v-if="!onHomePage"
@@ -52,7 +51,8 @@ import { mapGetters } from "vuex";
 export default Vue.extend({
   components: {
     UserProfile: () => import("@/components/UserProfile.vue"),
-    MessageCard: () => import("@/components/MessageCard.vue")
+    MessageCard: () => import("@/components/MessageCard.vue"),
+    SearchBar: () => import('@/components/SearchBar.vue'),
   },
   data() {
     return {
@@ -62,35 +62,15 @@ export default Vue.extend({
   computed: {
     ...mapGetters(["unreadMessages", "currentAccount"]),
     onHomePage(): boolean {
-      return false;
+      return this.$route.name === 'start';
+    }
+  },
+  methods: {
+    focus() {
+      console.log('adsf')
+      const search = this.$refs.search as HTMLElement
+      search.focus()
     }
   }
 });
 </script>
-
-<style>
-.rs-background {
-  background: url(https://www.runescape.com/img/rs3/global/header_bg_set.jpg)
-      no-repeat left top,
-    url(https://www.runescape.com/img/rs3/global/header_bg_set.jpg) no-repeat
-      right center,
-    url(https://www.runescape.com/img/rs3/global/header_bg_set.jpg) repeat-x
-      center bottom !important;
-}
-
-.v-toolbar__content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-a {
-  text-decoration: none;
-}
-.v-toolbar__content > div > a {
-  margin-right: 12px;
-}
-.v-chip + .v-chip {
-  margin-left: 0.5rem;
-}
-</style>

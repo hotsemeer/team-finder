@@ -1,5 +1,5 @@
 <template>
-  <v-dialog :value="value" @input="$emit('input', $event)">
+  <v-dialog :value="value" @input="$emit('input', $event)" max-width="700">
     <v-card>
       <v-card-title>New account</v-card-title>
 
@@ -14,8 +14,6 @@
               :key="index"
               cols="12"
               sm="3"
-              md="2"
-              lg="1"
             >
               <v-btn text x-large>
                 <v-icon>{{ type.icon }}</v-icon>

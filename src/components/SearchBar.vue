@@ -1,5 +1,6 @@
 <template>
   <v-text-field
+    ref="search"
     v-model="search"
     prepend-icon="search"
     single-line
@@ -22,6 +23,6 @@ export default Vue.extend({
     search(value: string): void {
       this.$router.replace({ query: { search: value } });
     },
-  },
+  }
 });
 </script>

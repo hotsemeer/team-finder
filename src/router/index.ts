@@ -16,7 +16,7 @@ function hasAccount(to: any, from: any, next: any) {
 const routes: RouteConfig[] = [
   {
     path: '/',
-    name: 'home',
+    name: 'start',
     beforeEnter: (to, from, next) => {
       if (store.state.user.accounts.length > 0) {
         return next({ name: 'find.boss.selection' });
@@ -27,7 +27,7 @@ const routes: RouteConfig[] = [
     props: (route) => ({
       step: Number(route.query.s) || 1
     }),
-    component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
+    component: () => import(/* webpackChunkName: "start" */ '../views/Start.vue')
   },
   {
     path: '/messages',

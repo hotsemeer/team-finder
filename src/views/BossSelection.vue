@@ -1,8 +1,14 @@
 <template>
   <div class="pa-0 pa-md-5">
-    <div class="d-flex justify-center">
-      <v-switch label="Show favourited" inset v-model="showFavourited">Favourited</v-switch>
-    </div>
+    <v-sheet outlined rounded class="d-flex justify-center ma-5 py-2 rs-content-block">
+      <v-btn-toggle multiple group color="purple darken-1" v-model="settings">
+        <v-btn text class="mr-2" value="dense"><v-icon>open_in_full</v-icon>Dense</v-btn>
+        <v-btn text value="favourited"><v-icon>star</v-icon>Favourites</v-btn>
+      </v-btn-toggle>
+    </v-sheet>
+
+      <!-- <v-switch class="mr-2" label="Show favourited" inset v-model="showFavourited"></v-switch> -->
+      <!-- <v-switch label="Dense list" inset v-model="dense"></v-switch> -->
 
     <v-divider class="mb-3" />
 
@@ -13,18 +19,19 @@
         :boss="boss"
         :to="{ name: `${preference}.boss`, params: { bossName: boss.name }}"
         :favourited="$store.state.favouriteBosses.includes(boss.id)"
+        :dense="settings.includes('dense')"
       />
     </transition-group>
   </div>
 </template>
 
 <script lang="ts">
-import Vue from "vue";
-import Boss from "@/classes/Boss";
+import Vue from 'vue';
+import Boss from '@/classes/Boss';
 
 export default Vue.extend({
   components: {
-    BossCard: () => import("@/components/BossCard.vue")
+    BossCard: () => import('@/components/BossCard.vue')
   },
   props: {
     preference: String,
@@ -32,8 +39,8 @@ export default Vue.extend({
   },
   data() {
     return {
-      showFavourited: false
-    };
+      settings: ['']
+    }
   },
   computed: {
     bossesFiltered(): Boss[] {
@@ -43,7 +50,7 @@ export default Vue.extend({
   methods: {
     bossFilter(boss: Boss): boolean {
       if (
-        this.showFavourited &&
+        this.settings.includes('favourited') &&
         !this.$store.state.favouriteBosses.includes(boss.id)
       ) {
         return false;
@@ -59,7 +66,7 @@ export default Vue.extend({
 });
 </script>
 
-<style scoped>
+<style lang="scss">
 .card-grid-enter,
 .card-grid-leave-to {
   opacity: 0;

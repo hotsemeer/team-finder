@@ -1,5 +1,5 @@
 <template>
-  <v-list dense nav>
+  <v-list dense nav class="rs-content-block">
     <v-list-item v-for="(link, index) in links" :key="index" :href="link.url" target="_blank">
       <v-list-item-icon>
         <v-icon>{{ link.icon }}</v-icon>
