@@ -34,7 +34,7 @@ const routes: RouteConfig[] = [
     name: 'messages',
     component: () =>
       import(
-        /* webpackChunkName: "messages" */ '../components/MessageCard2.vue'
+        /* webpackChunkName: "messages" */ '../components/MessageCard.vue'
       )
   },
   {

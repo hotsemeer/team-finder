@@ -1,17 +1,13 @@
 <template>
-  <v-app @keypress.s="focus" dark>
-    <v-app-bar app dark v-if="currentAccount" class="rs-header">
+  <v-app dark>
+    <!-- <v-app-bar app dark v-if="currentAccount" class="rs-header">
       <div>
         <v-btn text :to="{ name: 'find.boss.selection' }">Find</v-btn>
         <v-btn text :to="{ name: 'host.boss.selection' }">Host</v-btn>
       </div>
-
-      <div class="d-none d-sm-block">
-        <search-bar ref="search" />
-      </div>
       
       <user-profile />
-    </v-app-bar>
+    </v-app-bar>-->
 
     <v-main class="rs-bg">
       <router-view></router-view>
@@ -24,12 +20,12 @@
         <template #activator="{ on, attrs }">
           <v-btn
             v-model="open"
-            color="blue darken-2"
+            color="purple darken-2"
             dark
             fab
             v-bind="attrs"
             v-on="on"
-            style="position: fixed;bottom: 24px; right: 24px"
+            style="position: fixed;bottom: 24px; right: 24px; z-index: 1000;"
           >
             <v-icon v-if="open">mdi-close</v-icon>
             <v-badge v-else left color="indigo" :content="unreadMessages" :value="unreadMessages">
@@ -40,6 +36,22 @@
         <message-card @close="open = false" />
       </v-dialog>
     </v-main>
+
+    <v-bottom-navigation grow app shift color="purple">      
+      <user-profile/>
+      <!-- <v-btn style="height: inherit !important;">
+        <v-icon>{{ $store.getters.currentAccount.type.icon }}</v-icon>
+        <span>{{ $store.getters.currentAccount.username }}</span>
+      </v-btn> -->
+      <v-btn :to="{ name: 'find.boss.selection' }" style="height: inherit !important;">
+        <span>Find</span>
+        <v-icon>search</v-icon>
+      </v-btn>
+      <v-btn :to="{ name: 'host.boss.selection' }" style="height: inherit !important;">
+        <span>Host</span>
+        <v-icon>play_arrow</v-icon>
+      </v-btn>
+    </v-bottom-navigation>
   </v-app>
 </template>
 
@@ -52,25 +64,17 @@ export default Vue.extend({
   components: {
     UserProfile: () => import("@/components/UserProfile.vue"),
     MessageCard: () => import("@/components/MessageCard.vue"),
-    SearchBar: () => import('@/components/SearchBar.vue'),
   },
   data() {
     return {
-      open: false
+      open: false,
     };
   },
   computed: {
     ...mapGetters(["unreadMessages", "currentAccount"]),
     onHomePage(): boolean {
-      return this.$route.name === 'start';
-    }
+      return this.$route.name === "start";
+    },
   },
-  methods: {
-    focus() {
-      console.log('adsf')
-      const search = this.$refs.search as HTMLElement
-      search.focus()
-    }
-  }
 });
 </script>

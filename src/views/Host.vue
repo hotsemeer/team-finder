@@ -1,6 +1,7 @@
 <template>
   <div class="fill-height">
     <v-container
+    class="py-0"
       fluid
       fill-height
       align="center"
@@ -9,7 +10,7 @@
       style="background-position: center;"
     >
       <v-row justify="center" align="center" fill-height>
-        <v-card min-width="300" max-width="400">
+        <v-card @keyup.enter="save" min-width="300" max-width="400">
           <v-card-title class="d-block">
             <span>{{ boss.name }}</span>
             <v-tooltip bottom>
@@ -46,6 +47,7 @@
               label="Current team"
               hint="Enter to add name"
               v-model="team.members"
+              @input.prevent
             />
             <v-btn text @click="hostTeam">Host</v-btn>
           </v-form>
@@ -100,6 +102,9 @@ export default Vue.extend({
         params: { bossname: this.boss.name },
       });
     },
+    save() {
+      console.log('asd')
+    }
   },
 });
 </script>

@@ -1,9 +1,9 @@
 <template>
   <v-menu offset-y>
     <template v-slot:activator="{ on, attrs }">
-      <v-btn text v-bind="attrs" v-on="on">
+      <v-btn text v-bind="attrs" v-on="on" style="height: inherit !important;">
         <v-icon class="mr-2">{{ selectedAccount.type.icon }}</v-icon>
-        <v-toolbar-title class="d-none d-md-block">{{ selectedAccount.username }}</v-toolbar-title>
+        <span>{{ selectedAccount.username }}</span>
       </v-btn>
     </template>
 
@@ -11,11 +11,11 @@
       <v-list-item @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark">
         <v-list-item-icon>
           <transition name="fade" mode="out-in">
-            <v-icon key="dark-icon" v-if="$vuetify.theme.dark">brightness_3</v-icon>
-            <v-icon key="light-icon" v-else color="yellow darken-2">wb_sunny</v-icon>
+            <v-icon key="light-icon" v-if="$vuetify.theme.dark" color="yellow darken-2">wb_sunny</v-icon>
+            <v-icon key="dark-icon" v-else>brightness_3</v-icon>
           </transition>
         </v-list-item-icon>
-          <v-list-item-title>{{ $vuetify.theme.dark ? 'Dark' : 'Light'}} mode</v-list-item-title>
+        <v-list-item-title>{{ $vuetify.theme.dark ? 'Light' : 'Dark'}} mode</v-list-item-title>
       </v-list-item>
 
       <v-divider />
@@ -45,12 +45,12 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import RunescapeAccount from '@/classes/RunescapeAccount';
+import Vue from "vue";
+import RunescapeAccount from "@/classes/RunescapeAccount";
 
 export default Vue.extend({
   components: {
-    newAccountDialog: () => import('@/components/NewAccountDialog.vue'),
+    newAccountDialog: () => import("@/components/NewAccountDialog.vue"),
   },
   data() {
     return {
@@ -68,18 +68,18 @@ export default Vue.extend({
       this.dialog = true;
     },
     changeAccount(index: number): void {
-      this.$store.commit('selectAccount', index);
+      this.$store.commit("selectAccount", index);
     },
   },
 });
 </script>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .2s ease;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
 }
-.fade-enter, .fade-leave-to
-/* .component-fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
 }
 </style>

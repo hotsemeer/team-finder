@@ -15,7 +15,7 @@
       </v-card-actions>
     </div>
 
-    <div v-if="!dense" style="height: 180px; width: 100px;" class="d-flex justify-center align-center">
+    <div v-if="!dense" style="height: 180px; width: 100px;" class="d-flex justify-center align-center my-5">
       <v-img :src="require(`@/assets/bosses/${boss.image}`)" width="100" max-height="180" contain />
     </div>
     <v-btn icon @click.prevent="toggleFavourite" class="mt-2 mr-2">

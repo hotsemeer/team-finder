@@ -1,16 +1,19 @@
 <template>
-  <v-text-field
+  <v-autocomplete
+    v-hotkey="keymap"
     ref="search"
     v-model="search"
+    :items="bossNames"
+    clearable
     prepend-icon="search"
     single-line
     label="search"
-    class="mt-4 px-4"
     style="max-width: 450px;"
   />
 </template>
 
 <script lang="ts">
+import Boss from '@/classes/Boss';
 import Vue from 'vue';
 
 export default Vue.extend({
@@ -23,6 +26,27 @@ export default Vue.extend({
     search(value: string): void {
       this.$router.replace({ query: { search: value } });
     },
+  },
+  computed: {
+    bossNames(): string[] {
+      return this.$store.state.bosses.map((b: Boss) => b.name)
+    },
+    keymap() {
+      return {
+        s: this.focus
+      }
+    }
+  },
+  methods: {
+    focus() {
+      console.log('adsf')
+      const search = this.$refs.search as Vue
+      if (search) {
+        const input = search.$el.querySelector('input') as HTMLElement
+        console.log(input)
+        input.focus()
+      }
+    }
   }
 });
 </script>
