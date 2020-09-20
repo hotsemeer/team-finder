@@ -15,7 +15,7 @@
             <span>{{ boss.name }}</span>
             <v-tooltip bottom>
               <template v-slot:activator="{ on, attrs }">
-                <v-btn class="float-right" icon @click="saved = !saved" v-bind="attrs" v-on="on">
+                <v-btn class="float-right" icon @click="toggleSave" v-bind="attrs" v-on="on">
                   <v-icon v-if="!saved" color="grey">bookmark_border</v-icon>
                   <v-icon v-else color="red darken-2">bookmark</v-icon>
                 </v-btn>
@@ -60,14 +60,19 @@
 <script lang="ts">
 import Vue from 'vue';
 import Team, { ExperienceType, LootshareType } from '@/classes/Team';
+import Boss from '@/classes/Boss';
+import { PropType } from 'vue/types/umd';
 
 export default Vue.extend({
   props: {
-    boss: Object,
+    boss: {
+      type: Object as PropType<Boss>,
+      required: true
+    },
   },
   data() {
     return {
-      saved: false,
+      saved: this.$store.state.hostPresets.hasOwnProperty(this.boss.id),
       experienceLevels: [
         ExperienceType.BeginnerFriendly,
         ExperienceType.Experienced,
@@ -94,6 +99,12 @@ export default Vue.extend({
       return array;
     },
   },
+  created() {
+    const preset = this.$store.state.hostPresets[this.boss.id]
+    if (preset) {
+      this.team = preset
+    }
+   },
   methods: {
     hostTeam(): void {
       this.$store.commit('createTeam', this.team);
@@ -102,8 +113,13 @@ export default Vue.extend({
         params: { bossname: this.boss.name },
       });
     },
-    save() {
-      console.log('asd')
+    toggleSave() {
+      this.$store.commit('toggleHostPreset', {
+        boss: this.boss.id,
+        team: this.team
+      })
+
+      this.saved = this.$store.state.hostPresets.hasOwnProperty(this.boss.id)
     }
   },
 });

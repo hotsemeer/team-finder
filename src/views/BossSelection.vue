@@ -1,14 +1,15 @@
 <template>
   <div class="pa-0 pa-md-5">
-    <v-sheet outlined rounded class="d-flex justify-center ma-5">
-      <search-bar />
-    </v-sheet>
 
     <v-sheet outlined rounded class="d-flex justify-center ma-5 py-2">
       <v-btn-toggle multiple group color="purple darken-1" v-model="settings">
         <v-btn text class="mr-2" value="dense"><v-icon>open_in_full</v-icon>Dense</v-btn>
         <v-btn text value="favourited"><v-icon>star</v-icon>Favourites</v-btn>
       </v-btn-toggle>
+    </v-sheet>
+    
+    <v-sheet outlined rounded class="d-flex justify-center ma-5">
+      <search-bar />
     </v-sheet>
 
     <v-divider class="mb-3" />
@@ -69,33 +70,6 @@ export default Vue.extend({
 </script>
 
 <style lang="scss">
-.list-enter-active,
-.list-leave-active,
-.list-move {
-  transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
-  transition-property: opacity, transform;
-}
-
-.list-enter {
-  opacity: 0;
-  transform: translateX(50px) scaleY(0.5);
-}
-
-.list-enter-to {
-  opacity: 1;
-  transform: translateX(0) scaleY(1);
-}
-
-.list-leave-active {
-  position: absolute;
-}
-
-.list-leave-to {
-  opacity: 0;
-  transform: scaleY(0);
-  transform-origin: center top;
-}
-
 .boss-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 400px));

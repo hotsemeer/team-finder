@@ -1,22 +1,23 @@
 <template>
   <v-menu offset-y>
     <template v-slot:activator="{ on, attrs }">
-      <v-btn text v-bind="attrs" v-on="on" style="height: inherit !important;">
-        <v-icon class="mr-2">{{ selectedAccount.type.icon }}</v-icon>
+      <v-btn v-bind="attrs" v-on="on" style="height: inherit !important;">
+        <v-icon class="mr-2">
+          <!-- <v-badge left color="indigo" :content="1" :value="1"></v-badge> -->
+          {{ selectedAccount.type.icon }}
+        </v-icon>
         <span>{{ selectedAccount.username }}</span>
       </v-btn>
     </template>
 
     <v-list shaped>
-      <v-list-item @click.stop="$vuetify.theme.dark = !$vuetify.theme.dark">
+      <v-list-item @click.stop="open = true">
         <v-list-item-icon>
-          <transition name="fade" mode="out-in">
-            <v-icon key="light-icon" v-if="$vuetify.theme.dark" color="yellow darken-2">wb_sunny</v-icon>
-            <v-icon key="dark-icon" v-else>brightness_3</v-icon>
-          </transition>
+          <v-icon>message</v-icon>
         </v-list-item-icon>
-        <v-list-item-title>{{ $vuetify.theme.dark ? 'Light' : 'Dark'}} mode</v-list-item-title>
+        <v-list-item-title>Messages</v-list-item-title>
       </v-list-item>
+
 
       <v-divider />
 
@@ -40,6 +41,13 @@
       </v-list-item>
     </v-list>
 
+    <v-dialog
+      v-model="open"
+      :fullscreen="$vuetify.breakpoint.mobile"
+      :max-width="$vuetify.breakpoint.mobile ? 1000 : 500"
+    >
+      <message-card @close="open = false" />
+    </v-dialog>
     <new-account-dialog v-if="dialog" v-model="dialog" />
   </v-menu>
 </template>
@@ -51,11 +59,13 @@ import RunescapeAccount from "@/classes/RunescapeAccount";
 export default Vue.extend({
   components: {
     newAccountDialog: () => import("@/components/NewAccountDialog.vue"),
+    MessageCard: () => import("@/components/MessageCard.vue"),
   },
   data() {
     return {
       dialog: false,
       selectedAccountIndex: this.$store.state.currentAccountIndex,
+      open: false,
     };
   },
   computed: {
@@ -75,11 +85,4 @@ export default Vue.extend({
 </script>
 
 <style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-}
 </style>

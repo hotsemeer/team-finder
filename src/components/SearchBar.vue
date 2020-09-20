@@ -1,6 +1,5 @@
 <template>
   <v-autocomplete
-    v-hotkey="keymap"
     ref="search"
     v-model="search"
     :items="bossNames"
@@ -31,11 +30,6 @@ export default Vue.extend({
     bossNames(): string[] {
       return this.$store.state.bosses.map((b: Boss) => b.name)
     },
-    keymap() {
-      return {
-        s: this.focus
-      }
-    }
   },
   methods: {
     focus() {

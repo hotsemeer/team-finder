@@ -8,9 +8,6 @@ import './plugins/firebase';
 import '@mdi/font/css/materialdesignicons.css';
 import date from '@/filters/date';
 import '@/assets/main.scss'
-import VueHotkey from 'v-hotkey';
-
-Vue.use(VueHotkey)
 
 Vue.config.productionTip = false;
 Vue.filter('date', date);

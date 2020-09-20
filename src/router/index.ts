@@ -38,6 +38,40 @@ const routes: RouteConfig[] = [
       )
   },
   {
+    path: '/profile',
+    name: 'profile',
+    component: () =>
+      import(
+        /* webpackChunkName: "profile" */ '../views/Profile.vue'
+      ),
+    children: [
+      {
+        path: 'accounts',
+        name: 'profile.accounts',
+        component: () =>
+          import(
+            /* webpackChunkName: "profile.accounts" */ '../views/Accounts.vue'
+          ),
+      },
+      {
+        path: 'messages',
+        name: 'profile.messages',
+        component: () =>
+          import(
+            /* webpackChunkName: "profile.messages" */ '../components/MessageCard.vue'
+          ),
+      },
+      {
+        path: 'settings',
+        name: 'profile.settings',
+        component: () =>
+          import(
+            /* webpackChunkName: "profile.settings" */ '../components/MessageCard.vue'
+          ),
+      },
+    ]
+  },
+  {
     path: '/host',
     name: 'host.boss.selection',
     beforeEnter: hasAccount,

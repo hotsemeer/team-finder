@@ -2,7 +2,9 @@
   <v-container fill-height fluid>
     <v-row justify="space-around" align="start" class="fill-height">
       <v-col cols="12" md="4">
-        <router-view class="mx-0 mx-md-5" />
+        <transition name="fade">
+          <router-view class="mx-0 mx-md-5 mobile-fullscreen" />
+        </transition>
       </v-col>
 
       <v-col cols="12" md="5">

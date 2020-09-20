@@ -1,21 +1,21 @@
 import uniqueId from 'lodash/uniqueId';
 
 export default class Boss {
-  public id: String = uniqueId();
-  public name: String;
+  public id: string = uniqueId();
+  public name: string;
   public combat_level: Number;
-  public image: String;
-  public tags: String[] = [];
+  public image: string;
+  public tags: string[] = [];
   public team_sizes: Number[] = [2, 3, 4, 5];
-  public roles: String[] = [];
+  public roles: string[] = [];
 
   constructor(
-    name: String,
+    name: string,
     combatLvl: Number,
-    img: String,
-    tags: String[] = [],
+    img: string,
+    tags: string[] = [],
     team_sizes: Number[] = [2, 3, 4, 5],
-    roles: String[] = []
+    roles: string[] = []
   ) {
     this.name = name;
     this.combat_level = combatLvl;

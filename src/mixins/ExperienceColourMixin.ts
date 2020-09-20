@@ -1,6 +1,6 @@
 export default {
   methods: {
-    expColour(experience: String): string {
+    expColour(experience: string): string {
       switch (experience) {
         case 'Experienced':
           return 'text--darken-3 blue';

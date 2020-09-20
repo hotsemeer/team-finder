@@ -3,15 +3,15 @@ import uniqueId from 'lodash/uniqueId';
 import RunescapeAccount from './RunescapeAccount';
 
 export default class Team {
-  public id: String = uniqueId();
+  public id: string = uniqueId();
   public _boss: Boss;
   public host: RunescapeAccount;
   public size: Number = 2;
   public members_left: Number = 1;
-  public required_roles: String[] = [];
+  public required_roles: string[] = [];
   public required_experience: ExperienceType = ExperienceType.Experienced;
   public lootshare_type: LootshareType = LootshareType.FreeForAll;
-  public members: String[] = [];
+  public members: string[] = [];
   public created_at: Date = new Date();
 
   constructor(boss: Boss, host: RunescapeAccount) {

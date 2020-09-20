@@ -7,7 +7,11 @@
         max-height="24"
         max-width="24"
       ></v-img>
-      {{ team.boss.name }}
+      <span>{{ team.boss.name }}</span>
+      <v-spacer></v-spacer>
+      <v-btn icon @click="$router.go(-1)">
+        <v-icon>close</v-icon>
+      </v-btn>
     </v-card-title>
 
     <v-card-subtitle>{{ team.created_at | date }}</v-card-subtitle>
@@ -92,9 +96,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue';
-import ExperienceColourMixin from '@/mixins/ExperienceColourMixin';
-import Team from '@/classes/Team';
+import Vue from "vue";
+import ExperienceColourMixin from "@/mixins/ExperienceColourMixin";
+import Team from "@/classes/Team";
 
 export default Vue.extend({
   mixins: [ExperienceColourMixin],
@@ -103,7 +107,7 @@ export default Vue.extend({
   },
   methods: {
     sendMessage() {
-      this.$emit('openMessages');
+      this.$emit("openMessages");
     },
   },
 });

@@ -26,7 +26,8 @@ export default new Vuex.Store({
       new AccountType('Ironman', '$vuetify.icons.ironman'),
       new AccountType('Hardcore Ironman', '$vuetify.icons.hardcore_ironman')
     ),
-    userMessages: Array<UserMessage>()
+    userMessages: Array<UserMessage>(),
+    hostPresets: Array<Team>(),
   },
   getters: {
     accounts: (state: any) => {
@@ -76,6 +77,18 @@ export default new Vuex.Store({
     },
     deleteUserMessage(state, index: number) {
       state.user.userMessages.splice(index, 1);
+    },
+    toggleHostPreset(state, presetInfo) {
+      console.log(presetInfo)
+      const bossId = presetInfo.boss
+      const team = presetInfo.team
+
+      if (state.hostPresets[bossId] === team) {
+        state.hostPresets.splice(bossId, 1)
+      } else {
+        state.hostPresets[bossId] = team
+      }
+      console.log(state.hostPresets[bossId])
     }
   },
   actions: {
@@ -83,7 +96,6 @@ export default new Vuex.Store({
       if (!context.state.user.userMessages.some((um: UserMessage) => um.user === user)) {
         context.commit('addUserMessage', new UserMessage(user));
       }
-
     }
   },
   modules: {}
