@@ -1,8 +1,6 @@
 <template>
-  <div>
-    <h3>{{ combatStyle }}</h3>
-
-    <div class="equipmentGrid">
+  <div :class="$vuetify.breakpoint.mobile ? 'justify-center' : 'row'">
+    <div class="equipmentGrid col justify-center">
       <div class="Headgear">
         <equipment-slot
           slot-type="Headgear"
@@ -11,10 +9,18 @@
         />
       </div>
       <div class="Body">
-        <equipment-slot slot-type="Body" v-model="gear.Body" :options="options[combatStyle].Body" />
+        <equipment-slot
+          slot-type="Body"
+          v-model="gear.Body"
+          :options="options[combatStyle].Body"
+        />
       </div>
       <div class="Legs">
-        <equipment-slot slot-type="Legs" v-model="gear.Legs" :options="options[combatStyle].Legs" />
+        <equipment-slot
+          slot-type="Legs"
+          v-model="gear.Legs"
+          :options="options[combatStyle].Legs"
+        />
       </div>
       <div class="Boots">
         <equipment-slot
@@ -31,13 +37,25 @@
         />
       </div>
       <div class="Amulet">
-        <equipment-slot slot-type="Amulet" v-model="gear.Amulet" :options="options.Amulet" />
+        <equipment-slot
+          slot-type="Amulet"
+          v-model="gear.Amulet"
+          :options="options.Amulet"
+        />
       </div>
       <div class="Ring">
-        <equipment-slot slot-type="Ring" v-model="gear.Ring" :options="options.Ring" />
+        <equipment-slot
+          slot-type="Ring"
+          v-model="gear.Ring"
+          :options="options.Ring"
+        />
       </div>
       <div class="Back">
-        <equipment-slot slot-type="Back" v-model="gear.Back" :options="options[combatStyle].Back" />
+        <equipment-slot
+          slot-type="Back"
+          v-model="gear.Back"
+          :options="options[combatStyle].Back"
+        />
       </div>
 
       <div class="Mainhand">
@@ -53,6 +71,22 @@
           v-model="gear.Offhand"
           :options="options[combatStyle].Offhand"
         />
+      </div>
+    </div>
+
+    <div class="col">
+      <h4>Perks</h4>
+      <div>
+        <span>{{ gear.Body }}</span>
+      </div>
+      <div>
+        <span>{{ gear.Legs }}</span>
+      </div>
+      <div>
+        <span>{{ gear.Mainhand }}</span>
+      </div>
+      <div>
+        <span>{{ gear.Offhand }}</span>
       </div>
     </div>
   </div>
@@ -82,7 +116,7 @@ export default {
       },
       options: {
         Amulet: [
-          "Amulet_of_glory", 
+          "Amulet_of_glory",
           "Amulet_of_fury",
           "Blood_amulet_of_fury",
           "Saradomin's_hiss",
@@ -153,7 +187,7 @@ export default {
             "Fire_cape",
             "Max_cape",
             "Completionist_cape",
-            "Melee/TokHaar-Kal-Ket"
+            "Melee/TokHaar-Kal-Ket",
           ],
           Mainhand: [
             "Melee/Abyssal_whip",
@@ -167,7 +201,7 @@ export default {
             "Melee/Swordy_McSwordFace",
             "Melee/Masuta's_warspear",
             "Melee/Mizuyari",
-            "Melee/Elder_rune_longsword_+_5",            
+            "Melee/Elder_rune_longsword_+_5",
             "Melee/Elder_rune_2h_sword_+_5",
             "Melee/Blade_of_Nymora",
             "Melee/Annihilation",
@@ -351,10 +385,12 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "~vuetify/src/styles/settings/_variables";
+
 .equipmentGrid {
   display: grid;
-  grid-template-columns: repeat(3, 50px);
   grid-template-rows: repeat(5, 50px);
+  grid-template-columns: repeat(3, 50px);
   column-gap: 30px;
   row-gap: 10px;
 
@@ -405,9 +441,26 @@ export default {
     grid-row: 3;
     grid-column: 1;
   }
+
   .Offhand {
     grid-row: 3;
     grid-column: 3;
+  }
+}
+
+@media only screen and (max-width: #{map-get($grid-breakpoints, 'sm')}) {
+  .equipmentGrid {
+    grid-template-columns: repeat(2, 50px);
+
+    .Offhand {
+      grid-row: 4;
+      grid-column: 1;
+    }
+
+    .Ring {
+      grid-row: 1;
+      grid-column: 1;
+    }
   }
 }
 </style>

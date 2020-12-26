@@ -22,9 +22,6 @@
           <v-icon>{{ currentAccount.type.icon}}</v-icon>
           <span class="ml-1">{{ currentAccount.username}}</span>
         </v-btn>
-        <v-btn icon>
-          <v-icon>keyboard_arrow_down</v-icon>
-        </v-btn>
       </div>
     </v-app-bar>
 
@@ -32,7 +29,7 @@
       <router-view></router-view>
     </v-main>
 
-    <v-bottom-navigation v-if="currentAccount && $vuetify.breakpoint.mobile" grow app horizontal color="purple">
+    <v-bottom-navigation v-if="currentAccount && $vuetify.breakpoint.mobile" grow app horizontal color="white">
       <v-btn :to="{ name: 'find.boss.selection' }" style="height: inherit !important;">
         <span>Find</span>
         <v-icon>search</v-icon>
@@ -77,5 +74,10 @@ export default Vue.extend({
       border-bottom-style: solid;
     }
   }
+}
+
+* ::v-deep .v-btn.v-btn--active {
+  font-size: 1rem !important;
+  transition: font-size 100ms ease;
 }
 </style>

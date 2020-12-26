@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 
 function hasAccount(to: any, from: any, next: any) {
   if (!store.state.user.accounts.length) {
-    return next({ name: 'home' });
+    return next({ name: 'start' });
   } else {
     return next();
   }
@@ -50,7 +50,7 @@ const routes: RouteConfig[] = [
         name: 'profile.accounts',
         component: () =>
           import(
-            /* webpackChunkName: "profile.accounts" */ '../views/Accounts.vue'
+            /* webpackChunkName: "profile.accounts" */ '../views/profile/Accounts.vue'
           ),
       },
       {
@@ -58,7 +58,7 @@ const routes: RouteConfig[] = [
         name: 'profile.messages',
         component: () =>
           import(
-            /* webpackChunkName: "profile.messages" */ '../components/MessageCard.vue'
+            /* webpackChunkName: "profile.messages" */ '../views/profile/Messages.vue'
           ),
       },
       {
@@ -66,7 +66,15 @@ const routes: RouteConfig[] = [
         name: 'profile.settings',
         component: () =>
           import(
-            /* webpackChunkName: "profile.settings" */ '../components/MessageCard.vue'
+            /* webpackChunkName: "profile.settings" */ '../views/profile/Settings.vue'
+          ),
+      },
+      {
+        path: 'achievements',
+        name: 'profile.achievements',
+        component: () =>
+          import(
+            /* webpackChunkName: "profile.achievements" */ '../views/profile/Achievements.vue'
           ),
       },
     ]

@@ -1,40 +1,38 @@
 <template>
-  <v-dialog :value="value" @input="$emit('input', $event)" max-width="700">
-    <v-card>
-      <v-card-title>New account</v-card-title>
+  <v-card>
+    <v-card-title>New account</v-card-title>
 
-      <v-divider />
+    <v-divider />
 
-      <v-card-text class="mt-2">
-        <v-form v-model="valid">
-          <v-subheader class="pa-0">Accounttype</v-subheader>
-          <v-btn-toggle v-model="selectedButton" mandatory borderless group class="row">
-            <v-col
-              v-for="(type, index) in $store.state.accountTypes"
-              :key="index"
-              cols="12"
-              sm="3"
-            >
-              <v-btn text x-large>
-                <v-icon>{{ type.icon }}</v-icon>
-                {{ type.name }}
-              </v-btn>
-            </v-col>
-          </v-btn-toggle>
-          <v-text-field
-            v-model="account.username"
-            label="Username"
-            :rules="[rules.required, rules.username]"
-          >Username</v-text-field>
-        </v-form>
-      </v-card-text>
+    <v-card-text class="mt-2">
+      <v-form v-model="valid">
+        <v-subheader class="pa-0">Accounttype</v-subheader>
+        <v-btn-toggle v-model="selectedButton" mandatory borderless group class="row">
+          <v-col
+            v-for="(type, index) in $store.state.accountTypes"
+            :key="index"
+            cols="12"
+            sm="3"
+          >
+            <v-btn text x-large>
+              <v-icon>{{ type.icon }}</v-icon>
+              {{ type.name }}
+            </v-btn>
+          </v-col>
+        </v-btn-toggle>
+        <v-text-field
+          v-model="account.username"
+          label="Username"
+          :rules="[rules.required, rules.username]"
+        >Username</v-text-field>
+      </v-form>
+    </v-card-text>
 
-      <v-card-actions>
-        <v-btn color="primary" text @click="$emit('input', false)">Close</v-btn>
-        <v-btn color="primary" text :disabled="!valid" @click="saveAccount">Save</v-btn>
-      </v-card-actions>
-    </v-card>
-  </v-dialog>
+    <v-card-actions>
+      <v-btn color="primary" text @click="$emit('input', false)">Close</v-btn>
+      <v-btn color="primary" text :disabled="!valid" @click="saveAccount">Save</v-btn>
+    </v-card-actions>
+  </v-card>
 </template>
 
 <script lang="ts">

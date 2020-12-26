@@ -1,14 +1,13 @@
 <template>
   <v-card v-if="!selectedUserMessage" :height="height">
-    <v-toolbar flat>
+    <!-- <v-toolbar flat>
       <v-btn icon @click="$emit('close')">
         <v-icon>close</v-icon>
       </v-btn>
       <v-spacer />
       <v-icon class="mr-2">message</v-icon>
       <v-toolbar-title>messages</v-toolbar-title>
-    </v-toolbar>
-
+    </v-toolbar> -->
     <v-sheet v-if="!userMessages || !userMessages.length" class="list-header">
       <empty-messages style="width: 75%; height: 75%;" class="mx-10" />
     </v-sheet>
