@@ -1,0 +1,78 @@
+@import "~vuetify/src/styles/settings/_variables";
+
+.equipment-grid {
+  display: grid;
+  grid-template-rows: repeat(5, 50px);
+  grid-template-columns: repeat(3, 50px);
+  column-gap: 30px;
+  row-gap: 10px;
+
+  > * {
+    box-shadow: inset 1em 1em 1em #1e1e1e;
+  }
+
+  .Headgear {
+    grid-row: 1;
+    grid-column: 2;
+  }
+
+  .Amulet {
+    grid-row: 2;
+    grid-column: 2;
+  }
+
+  .Body {
+    grid-row: 3;
+    grid-column: 2;
+  }
+
+  .Legs {
+    grid-row: 4;
+    grid-column: 2;
+  }
+
+  .Boots {
+    grid-row: 5;
+    grid-column: 2;
+  }
+
+  .Gloves {
+    grid-row: 5;
+    grid-column: 1;
+  }
+
+  .Ring {
+    grid-row: 5;
+    grid-column: 3;
+  }
+
+  .Back {
+    grid-row: 2;
+    grid-column: 1;
+  }
+  .Mainhand {
+    grid-row: 3;
+    grid-column: 1;
+  }
+
+  .Offhand {
+    grid-row: 3;
+    grid-column: 3;
+  }
+}
+
+@media only screen and (max-width: #{map-get($grid-breakpoints, 'sm')}) {
+  .equipment-grid.equipment-grid--editable {
+    grid-template-columns: repeat(2, 50px);
+
+    .Offhand {
+      grid-row: 4;
+      grid-column: 1;
+    }
+
+    .Ring {
+      grid-row: 1;
+      grid-column: 1;
+    }
+  }
+}

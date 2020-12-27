@@ -1,6 +1,6 @@
 <template>
   <div :class="$vuetify.breakpoint.mobile ? 'justify-center' : 'row'">
-    <div class="equipmentGrid col justify-center">
+    <div class="equipment-grid equipment-grid--editable col justify-center">
       <div class="Headgear">
         <equipment-slot
           slot-type="Headgear"
@@ -98,7 +98,7 @@ export default {
     combatStyle: String,
   },
   components: {
-    EquipmentSlot: () => import("@/components/EquipmentSlot.vue"),
+    EquipmentSlot: () => import("@/components/EquipmentSlotEditable.vue"),
   },
   data() {
     return {
@@ -383,84 +383,3 @@ export default {
   },
 };
 </script>
-
-<style scoped lang="scss">
-@import "~vuetify/src/styles/settings/_variables";
-
-.equipmentGrid {
-  display: grid;
-  grid-template-rows: repeat(5, 50px);
-  grid-template-columns: repeat(3, 50px);
-  column-gap: 30px;
-  row-gap: 10px;
-
-  > * {
-    box-shadow: inset 1em 1em 1em #1e1e1e;
-  }
-
-  .Headgear {
-    grid-row: 1;
-    grid-column: 2;
-  }
-
-  .Amulet {
-    grid-row: 2;
-    grid-column: 2;
-  }
-
-  .Body {
-    grid-row: 3;
-    grid-column: 2;
-  }
-
-  .Legs {
-    grid-row: 4;
-    grid-column: 2;
-  }
-
-  .Boots {
-    grid-row: 5;
-    grid-column: 2;
-  }
-
-  .Gloves {
-    grid-row: 5;
-    grid-column: 1;
-  }
-
-  .Ring {
-    grid-row: 5;
-    grid-column: 3;
-  }
-
-  .Back {
-    grid-row: 2;
-    grid-column: 1;
-  }
-  .Mainhand {
-    grid-row: 3;
-    grid-column: 1;
-  }
-
-  .Offhand {
-    grid-row: 3;
-    grid-column: 3;
-  }
-}
-
-@media only screen and (max-width: #{map-get($grid-breakpoints, 'sm')}) {
-  .equipmentGrid {
-    grid-template-columns: repeat(2, 50px);
-
-    .Offhand {
-      grid-row: 4;
-      grid-column: 1;
-    }
-
-    .Ring {
-      grid-row: 1;
-      grid-column: 1;
-    }
-  }
-}
-</style>

@@ -80,6 +80,23 @@ const routes: RouteConfig[] = [
     ]
   },
   {
+    path: '/u/:username',
+    name: 'public.profile',
+    props: true,
+    component: () =>
+      import(
+        /* webpackChunkName: "public.profile" */ '../views/PublicProfile.vue'
+      ),
+  },
+  {
+    path: '/stats',
+    name: 'stats',
+    component: () =>
+      import(
+        /* webpackChunkName: "stats" */ '../components/StatsList.vue'
+      ),
+  },
+  {
     path: '/host',
     name: 'host.boss.selection',
     beforeEnter: hasAccount,
