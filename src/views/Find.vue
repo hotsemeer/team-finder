@@ -71,7 +71,7 @@ export default Vue.extend({
       return this.boss ? `background-image: url("${this.boss.image}")` : "";
     },
     teams(): Team[] {
-      return this.$store.state.teams;
+      return this.$store.state.teams.filter((t:Team) => t.boss.name === this.boss.name);
     },
   },
 });
