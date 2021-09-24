@@ -4,7 +4,15 @@ export default [
   new Boss('Barrows: Rise of the six', 650, 'rise_of_the_six.png'),
   new Boss('Corporeal Beast', 785, 'corporeal_beast.png'),
   new Boss('Kalphite King', 650, 'kalphite_king.png'),
-  new Boss('Solak', 7000, 'solak.png'),
+  new Boss('Solak', 7000, 'solak.png', [], [2, 3, 4, 5, 6, 7],
+  [
+    'Base',
+    'Mind tank',
+    'Elf 1',
+    'Elf 2',
+    'Cleanse',
+    'Shield dome'
+  ]),
   new Boss('Vorago', 10000, 'vorago.png'),
   new Boss('Nex', 1001, 'nex.png', ['Gwd1']),
   new Boss('K\'ril Tsutsaroth', 650, 'kril_tsutsaroth.png', ['Gwd1']),

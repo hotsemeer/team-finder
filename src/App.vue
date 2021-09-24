@@ -48,7 +48,6 @@
 
 <script lang="ts">
 import Vue from "vue";
-import RunescapeAccount from "@/classes/RunescapeAccount";
 import { mapGetters } from "vuex";
 
 export default Vue.extend({
@@ -65,17 +64,6 @@ export default Vue.extend({
 </script>
 
 <style scoped lang="scss">
-.profile_link {
-  line-height: 20px;
-  &:hover {
-    span {
-      padding-bottom: 1px;
-      border-bottom-width: 2px;
-      border-bottom-style: solid;
-    }
-  }
-}
-
 * ::v-deep .v-btn.v-btn--active {
   font-size: 1rem !important;
   transition: font-size 100ms ease;
